@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MdArrowDropDown } from 'react-icons/md'; // Import dropdown icon
 import DropdownMenu from './DropdownMenu'; // Import DropdownMenu component
 import {  useNavigate } from 'react-router-dom';
+import abc from './abc.jpg';
 export default function Home() {
   const [activeButton, setActiveButton] = useState(null);
   const [showDropdown, setShowDropdown] = useState(null);
@@ -75,17 +76,18 @@ export default function Home() {
   };
   
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-gray-100 p-4" style={{ backgroundImage:`url("")`}}>
-      <div className="border-2 border-gray-300 rounded-lg p-6 bg-white shadow-lg max-w-sm w-full h-auto">
-        <h1 className="text-3xl font-bold text-center mb-6 text-red-600">
+    <div className="relative flex items-center justify-center min-h-screen bg-gray-100 p-4"
+    style={{ backgroundImage: `url(${abc})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div className="border-2 border-gray-300 rounded-lg p-6 bg-white bg-opacity-50 shadow-lg max-w-sm w-full h-auto">
+        <div className="text-4xl font-bold text-center mb-6 text-black"> 
           SimplyCompare
-        </h1>
+        </div>
         <div className="grid grid-cols-2 gap-4 font-bold relative">
           {Object.keys(options).map((label, index) => (
             <button
               key={index}
               onClick={() => handleButtonClick(label)}
-              className="relative bg-gray-300 text-gray-800 py-3 px-6 rounded-lg flex items-center justify-between hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300 w-full"
+              className="relative bg-orange-400 text-gray-800 py-3 px-6 rounded-lg flex items-center justify-between hover:bg-white focus:outline-none focus:ring-2 focus:ring-gray-300 w-full"
             >
               {label}
               <MdArrowDropDown

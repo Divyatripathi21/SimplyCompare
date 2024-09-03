@@ -16,10 +16,10 @@ export default function DropdownMenu({ options, show, onClose }) {
   if (!show) return null;
 
   return (
-    <div className="absolute left-full ml-9 mt-0 w-64 bg-white border border-gray-300 shadow-lg rounded-lg z-10">
+    <div className="absolute left-full text-black ml-9 mt-0 w-64 bg-gray-200 border border-gray-300 shadow-lg rounded-lg z-10">
     <button
       onClick={onClose}
-      className="absolute top-0 right-0 text-gray-600 hover:text-red-600 text-3xl"
+      className="absolute top-0 right-0 text-black hover:text-red-600 text-3xl"
     >
       &times;
     </button>
@@ -28,7 +28,7 @@ export default function DropdownMenu({ options, show, onClose }) {
         <button
           key={index}
           onClick={() => handleOptionClick(option)}
-          className="bg-gray-200 text-gray-800 py-2 px-16 rounded-lg mb-2 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 w-full text-left"
+          className="bg-orange-400 text-black py-2 px-16 rounded-lg mb-2 hover:bg-white focus:outline-none focus:ring-2 focus:ring-gray-300 w-full text-left"
         >
           {option}
         </button>

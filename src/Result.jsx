@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import abc from './abc.jpg';
 
 function Result({ inputs }) {
   const [loading, setLoading] = useState(true);
@@ -108,32 +109,33 @@ function Result({ inputs }) {
     navigate('/');
   }
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="relative bg-white border border-gray-300 shadow-lg rounded-lg p-6 w-11/12 max-w-4xl">
+    <div className="fixed inset-0 flex items-center justify-center z-50"
+    style={{ backgroundImage: `url(${abc})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div className="relative bg-white border bg-opacity-50 border-gray-300 shadow-lg rounded-lg p-6 w-11/12 max-w-4xl">
         <button className="absolute top-2 right-2 text-gray-600 hover:text-red-600 text-4xl"
         onClick={handleCross}
         >
           &times;
         </button>
-        <h2 className="text-xl font-bold mb-4 text-center">Generated Result</h2>
+        <h2 className="text-3xl font-bold mb-4 text-center">Generated Result</h2>
         {loading ? (
           <div className="text-center font-serif font-bold ">Loading...</div>
         ) : error ? (
           <div className="text-center text-red-500">{error}</div>
         ) : (
-          <div className="text-gray-800">
-            <h1 className="text-lg font-bold mb-2">Comparison Table</h1>
+          <div className="text-black">
+            <h1 className="text-2xl font-bold mb-2">Comparison Table</h1>
             <div className="overflow-x-auto max-h-96">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+              <table className="min-w-full divide-y divide-gray-100">
+                <thead className="bg-gray-50 bg-opacity-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-bold text-gray-900  uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-bold text-black  uppercase tracking-wider">
                       Parameter
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-bold text-black  uppercase tracking-wider">
                       {inputs.option1}
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-bold  text-gray-900 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-bold  text-black  uppercase tracking-wider">
                       {inputs.option2}
                     </th>
                   </tr>
@@ -141,13 +143,13 @@ function Result({ inputs }) {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {tableData.map((row, index) => (
                     <tr key={index}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-black ">
                         {row.parameter}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-black ">
                         {row.option1}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-black ">
                         {row.option2}
                       </td>
                     </tr>
@@ -156,8 +158,8 @@ function Result({ inputs }) {
               </table>
             </div>
             <div className="mt-4 text-center">
-              <h2 className="text-lg font-bold">Verdict:</h2>
-              <span className="block text-2xl font-bold text-red-600 mt-2">
+              <h2 className="text-3xl font-bold">Final Verdict:</h2>
+              <span className="block text-2xl font-bold text-blue-600 mt-2">
                 {finalVerdict}
               </span>
             </div>
@@ -169,4 +171,3 @@ function Result({ inputs }) {
 }
 
 export default Result;
-  
